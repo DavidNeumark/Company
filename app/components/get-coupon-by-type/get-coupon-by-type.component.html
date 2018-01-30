@@ -1,0 +1,60 @@
+<!-- <div class="table-responsive" > -->
+
+  <!-- <form> -->
+      <div class="form-group">
+        <div class="col-sm-3">
+          <label for="listOfTypes">Select Coupon Type:</label>
+            <select 
+              name="listOfTypes" 
+              id="listOfTypes" 
+              class="form-control" 
+              [(ngModel)]="couponToGet.type">
+                <option
+                  (click)="buttonClickedGetCouponByType()"
+                  *ngFor="let _type of listOfTypes" 
+                  [value]="_type.type">
+                    {{ _type.type }}
+                </option>
+            </select>
+        </div>
+      </div>
+  <!-- </form> -->
+
+  <div class="col-sm-3">
+      <p><button class="btn btn-primary" (click)="buttonClickedGetCouponByType()">Get Coupon By Type!</button></p>
+  </div>
+
+<table class="table table-striped table-bordered" *ngIf="_coupons.length > 0" border="1">
+<tr>
+  <th>#</th>
+  <th>Coupon Title</th>
+  <th>Coupon StartDate</th>
+  <th>Coupon EndDate</th>
+  <th>Coupon Amount</th>
+  <th>Coupon Type</th>
+  <th>Coupon Message</th>
+  <th>Coupon Price</th>
+  <th>Coupon Image</th>     
+</tr>
+<tr *ngFor="let c of _coupons">
+  <td>{{c.id}}</td>
+  <td>{{c.title}}</td>
+  <td>{{c.startDate | date:"dd/MM/yy"}}</td>
+  <td>{{c.endDate | date:"dd/MM/yy"}}</td>
+  <td>{{c.amount}}</td>
+  <td>{{c.type}}</td>
+  <td>{{c.message}}</td>
+  <td>{{c.price  | currency: 'USD' }}</td>
+  <td><img class="card-img-top" src="{{ c.image }}" alt="Card image cap"></td>
+</tr>
+</table>
+<!-- </div> -->
+<!-- <div class="col-sm-3">
+<pre>{{ couponToGet.type |json}}</pre>
+</div> -->
+
+
+
+<!-- <div *ngIf="_coupons.length == 0">
+  Loading, please wait ...
+</div> -->

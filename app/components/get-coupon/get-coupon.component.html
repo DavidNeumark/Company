@@ -1,0 +1,66 @@
+
+<!-- <div class="table-responsive"> -->
+  <!-- <form> -->
+        <div class="container">
+                <div class="row">
+                  <div class="col">
+      <div class="form-group">
+          <div class="col-10">
+              <label for="listOfCoupons">Select a Coupon:</label>
+              <select 
+                  multiple 
+                  name="listOfCoupons" 
+                  id="listOfCoupons" 
+                  class="form-control">
+                      <option 
+                          (click)="setCoupon(c)"
+                           *ngFor="let c of _coupons" 
+                           [ngValue]="c">
+                              {{ c.title }}
+                      </option>
+              </select>
+          </div>
+      </div>
+  <!-- </form><br> -->
+
+<!-- <table class="table table-striped table-bordered" *ngIf="couponToGet.id != undefined" border="1">
+<tr>
+  <th>#</th>
+  <th>Coupon Title</th>
+  <th>Coupon StartDate</th>
+  <th>Coupon EndDate</th>
+  <th>Coupon Amount</th>
+  <th>Coupon Type</th>
+  <th>Coupon Message</th>
+  <th>Coupon Price</th>
+  <th>Coupon Image</th>     
+</tr>
+<tr>
+  <td>{{couponToGet.id}}</td>
+  <td>{{couponToGet.title}}</td>
+  <td>{{couponToGet.startDate | date:"dd/MM/yy"}}</td>
+  <td>{{couponToGet.endDate | date:"dd/MM/yy"}}</td>
+  <td>{{couponToGet.amount}}</td>
+  <td>{{couponToGet.type}}</td>
+  <td>{{couponToGet.message}}</td>
+  <td>{{couponToGet.price | currency: 'USD' }}</td>
+  <td><img class="card-img-top" src="{{ couponToGet.image }}" alt="Card image cap"></td>
+</tr>
+</table>-->
+<!-- </div>  -->
+
+</div>
+<div class="col">
+    <div *ngIf="couponToGet.title" class="card" style="width: 22rem;">
+      <img class="card-img-top" [src]="couponToGet.image">
+      <div class="card-body">
+        <h4 *ngIf="couponToGet.title" class="card-title">{{ couponToGet.title }}</h4>
+        <h5 *ngIf="couponToGet.price" class="card-text">Price: {{ couponToGet.price | currency:'USD' }}</h5>
+        <p *ngIf="couponToGet.startDate" class="card-text">Start Date: {{ couponToGet.startDate | date:"dd/MM/yyyy" }}</p>
+        <p *ngIf="couponToGet.endDate" class="card-text">End Date: {{ couponToGet.endDate | date:"dd/MM/yyyy" }}</p>
+        <p *ngIf="couponToGet.amount" class="card-text">Amount: {{ couponToGet.amount }}</p>
+        <p *ngIf="couponToGet.type" class="card-text">Coupon Type: {{ couponToGet.type }}</p>
+        <p *ngIf="couponToGet.message" class="card-text">Message: {{ couponToGet.message }}</p>
+      </div>
+    </div>
+</div>

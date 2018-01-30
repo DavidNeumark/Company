@@ -1,0 +1,50 @@
+<div class="table-responsive">
+  <form>
+      <div class="form-group">
+          <div class="col-sm-2">
+            <label for="comment">Enter the Maximum Price:</label>
+            <input 
+              name="couponIdTXT" 
+              #price (keyup.enter)="onKeyup(price.value)" 
+              type="number" class="form-control" 
+              [(ngModel)]="couponToGet.price" />
+          </div>
+      </div> 
+      <div class="col-sm-3">
+        <button 
+          class="btn btn-primary" 
+          (click)="couponByPriceClick()" 
+          [disabled]="couponToGet.price == 0 || couponToGet.price == null">
+            Get Now!
+        </button>
+      </div>
+  </form><br>
+
+<table 
+  class="table table-striped table-bordered" 
+  border="1">
+<tr>
+  <th>#</th>
+  <th>Coupon Title</th>
+  <th>Coupon StartDate</th>
+  <th>Coupon EndDate</th>
+  <th>Coupon Amount</th>
+  <th>Coupon Type</th>
+  <th>Coupon Message</th>
+  <th>Coupon Price</th>
+  <th>Coupon Image</th>     
+</tr>
+<tr *ngFor="let c of _coupons">
+  <td>{{c.id}}</td>
+  <td>{{c.title}}</td>
+  <td>{{c.startDate | date:"dd/MM/yy"}}</td>
+  <td>{{c.endDate | date:"dd/MM/yy"}}</td>
+  <td>{{c.amount}}</td>
+  <td>{{c.type}}</td>
+  <td>{{c.message}}</td>
+  <td>{{c.price | currency: 'USD' }}</td>
+  <td><img class="card-img-top" src="{{ c.image }}" alt="Card image cap"></td>
+</tr>
+</table>
+</div>
+<!-- <pre>{{_coupons | json}}</pre> -->
