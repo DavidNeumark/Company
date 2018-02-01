@@ -21,7 +21,9 @@
           <td>{{c.type}}</td>
           <td>{{c.message}}</td>
           <td>{{c.price | currency: 'USD' }}</td>
-          <td>{{c.image}}</td>
+          <div class="card" style="width: 11rem;">
+            <td><img class="card-img-top img-thumbnail" src="{{ c.image }}" alt="Card image cap"></td>
+          </div>
           <td>
               <button class="btn btn-default"  type="button" (click)="deleteFieldValue(myIndex)">
                       <span class="glyphicon glyphicon-trash"></span>

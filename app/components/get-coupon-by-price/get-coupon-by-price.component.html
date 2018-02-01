@@ -43,7 +43,9 @@
   <td>{{c.type}}</td>
   <td>{{c.message}}</td>
   <td>{{c.price | currency: 'USD' }}</td>
-  <td><img class="card-img-top" src="{{ c.image }}" alt="Card image cap"></td>
+  <div class="card" style="width: 11rem;">
+    <td><img class="card-img-top img-thumbnail" src="{{ c.image }}" alt="Card image cap"></td>
+  </div>
 </tr>
 </table>
 </div>
