@@ -1,9 +1,9 @@
 <h3>Create Coupon:</h3><br>
-
+<script src="./assets/submitCreate.js"></script>
 <div class="row">
 
 <div class="col-md-6">
-  <form>
+  <form class="needs-validation" id="" novalidate #f="ngForm">
     <div class="form-group row">
         <label for="couponTitle" class="col-sm-3 col-form-label">Enter Coupon Title:</label>
         <div class="col-sm-8">
@@ -15,7 +15,7 @@
           placeholder="Coupon Title" 
           class="form-control" 
           [(ngModel)]="newCoupon.title"/> 
-            <div class="alert alert-danger" *ngIf="couponTitleTXT.touched && !couponTitleTXT.valid">Coupon Title is required!</div>         
+            <div class="invalid-feedback">Coupon Title is required!</div>         
       </div>
     </div>
     <div class="form-group row">        
@@ -29,7 +29,7 @@
           placeholder="Enter startDate" 
           class="form-control" 
           [(ngModel)]="newCoupon.startDate" />
-          <div class="alert alert-danger" *ngIf="startDate.touched && startDate.invalid">
+          <div class="invalid-feedback">
             Start Date is Required.
           </div>
     </div>
@@ -45,7 +45,7 @@
           placeholder="Enter endDate" 
           class="form-control" 
           [(ngModel)]="newCoupon.endDate" />
-          <div class="alert alert-danger" *ngIf="endDate.touched && endDate.invalid">
+          <div class="invalid-feedback">
               End Date is Required.
             </div>
         </div>
@@ -61,7 +61,7 @@
         placeholder="Enter Amount" 
         class="form-control" 
         [(ngModel)]="newCoupon.amount" />
-        <div class="alert alert-danger" *ngIf="amount.touched && amount.invalid">
+        <div class="invalid-feedback">
           Amount is Required.
         </div>
       </div>
@@ -82,7 +82,7 @@
                   {{ _type.type }}
               </option>
           </select>
-          <div class="alert alert-danger" *ngIf="type.touched && type.invalid">
+          <div class="invalid-feedback">
             Coupon Type is Required.
             </div>
       </div>
@@ -96,6 +96,9 @@
           placeholder="Enter Message" 
           class="form-control" 
           [(ngModel)]="newCoupon.message" />
+          <div class="valid-feedback">
+              Optional
+            </div>
         </div>
     </div>
     <div class="form-group row">
@@ -106,19 +109,15 @@
               <span class="input-group-text">$</span>
             </div>
         <input 
-          required
+        required
           #price="ngModel"
           name="priceNumber"
           type="number" 
           placeholder="Enter Price" 
           class="form-control" 
-          [(ngModel)]="newCoupon.price"
-          [min]="0" />
-          </div>
-          <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
-              <div *ngIf="price.errors.required">Price is Required.</div>
-              <div *ngIf="price.errors.min">Price should be 0 or higher.</div>
-          </div>
+          [(ngModel)]="newCoupon.price"/>
+          <div class="invalid-feedback">Price is Required.</div>
+        </div>
         </div>
     </div>
     <div class="form-group row">
@@ -131,15 +130,15 @@
           type="text" 
           placeholder="Enter Image Url" 
           class="form-control" 
-          [(ngModel)]="newCoupon.image" 
-          [max]="200"/>
+          [(ngModel)]="newCoupon.image"/>
+          <div class="valid-feedback">
+              Optional
+            </div>
         </div>
     </div>  
-<!-- <p>
-  {{ newCoupon | json }}
-</p><br> -->
+
 <div class="col-sm-6">
-<button class="btn btn-primary"  (click)="createCoupon()">Create Coupon</button><br><br>
+<button type="submit" class="btn btn-primary" (click)="createCoupon()" >Create Coupon</button><br><br>
 </div>
 </form>
 </div>
@@ -161,6 +160,3 @@
 </div>
 
 </div>
-
-
-

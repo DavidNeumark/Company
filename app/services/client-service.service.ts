@@ -16,24 +16,20 @@ export class ClientServiceService {
 
   constructor(private _http: Http) { }
 
-  public getAllCoupons()
-  {
-    var promise = this._http.get('http://localhost:8080/Company/getAllCoupons').map(
-      
-      function(couponsResponse)
-      {
-        return couponsResponse.json() 
+  public getAllCoupons() {
+    const promise = this._http.get('./getAllCoupons/').map(
+
+      (couponsResponse) => {
+        return couponsResponse.json();
       }
     );
     return promise;
   }
 
-  public getCoupon(id : number)
-{
-  var promise =  this._http.get('http://localhost:8080/Company/getCoupon/' + id)
+  public getCoupon(id: number) {
+  const promise =  this._http.get('./getCoupon/' + id)
   .map(
-function (couponsResponse)
-{
+ (couponsResponse) => {
   return couponsResponse.json();
 }
 
@@ -42,13 +38,11 @@ function (couponsResponse)
 
 }
 
-public getCouponByType(type : CouponType)
-{
-  
-  var promise =  this._http.get('http://localhost:8080/Company/getCouponByType/' + type)
+public getCouponByType(type: CouponType) {
+
+  const promise =  this._http.get('./getCouponByType/' + type)
   .map(
-function (couponsResponse)
-{
+ (couponsResponse) => {
   return couponsResponse.json();
 }
 
@@ -56,26 +50,10 @@ function (couponsResponse)
   return promise;
 }
 
-public getCouponByPrice(price : number)
-{
-  var promise =  this._http.get('http://localhost:8080/Company/getCouponByPrice/' + price)
+public getCouponByPrice(price: number) {
+  const promise =  this._http.get('./getCouponByPrice/' + price)
   .map(
-function (couponsResponse)
-{
-  return couponsResponse.json();
-}
-
-  );
-  return promise;
-
-}
-
-public getCouponByDate(date : Date)
-{
-  var promise =  this._http.get('http://localhost:8080/Company/getCouponByDate/' + date)
-  .map(
-function (couponsResponse)
-{
+(couponsResponse) => {
   return couponsResponse.json();
 }
 
@@ -84,22 +62,31 @@ function (couponsResponse)
 
 }
 
-  public createCoupon(c: Coupon)
-  {
+public getCouponByDate(date: Date) {
+  const promise =  this._http.get('./getCouponByDate/' + date)
+  .map(
+(couponsResponse) => {
+  return couponsResponse.json();
+}
+
+  );
+  return promise;
+
+}
+
+  public createCoupon(c: Coupon) {
     // console.log(c);
-    return this._http.post('http://localhost:8080/Company/createCoupon', c);
+    return this._http.post('./createCoupon/', c);
   }
 
-  public updateCoupon(c: Coupon)
-  {
+  public updateCoupon(c: Coupon) {
     // console.log(c);
-    return this._http.put('http://localhost:8080/Company/updateCoupon', c);
+    return this._http.put('./updateCoupon/', c);
   }
 
-public deleteCoupon(c: Coupon)
-{
+public deleteCoupon(c: Coupon) {
   // console.log(c);
- return this._http.delete('http://localhost:8080/Company/deleteCoupon/', {body: c}); 
+ return this._http.delete('./deleteCoupon/', {body: c});
 }
 
 }
